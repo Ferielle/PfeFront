@@ -1,0 +1,31 @@
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>products images</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+      <tr *ngFor="let item of items ">
+         
+        <td>
+          <img [src]="item.Binarydata" />
+        </td>
+        <td>   <button class="btn btn-danger rounded-button">Supprimer</button></td>
+          
+    
+    
+      </tr>
+      <tr>
+        <input type="text" #categoryInput placeholder="category">
+        <input type="file" #Binarydata (change)="onFileSelected($event)" />
+
+        <div class="d-flex justify-content-end"><button class="btn btn-green btn-sm ml-2" (click)="addItem(Binarydata.value)">Add</button>
+    
+     </div>    
+    </tr>
+    </tbody>
+    </table>
+    
+         

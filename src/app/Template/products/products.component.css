@@ -1,0 +1,12 @@
+.btn-green {
+    background-color: #28a745; /* Green color */
+    color: #ffffff; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Adjust the padding to set the width and height */
+    cursor: pointer; /* Add pointer cursor on hover */
+    border-radius: 4px; /* Add some rounded corners */
+  }
+  
+h3 {
+    text-align: center;
+  }
