@@ -18,7 +18,7 @@ export class ProductDetailsServiceService {
   }
 
   getAll() {
-    return this.http.get(`${this.url}/GetAll`);
+    return this.http.get(`${this.url}/GetAll`, { responseType: 'blob' });
   }
   delete(id) {
     return this.http.delete(this.url+"/DeleteId?Id="+id);

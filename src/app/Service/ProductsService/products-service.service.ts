@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Products } from 'src/app/Model/Products';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class ProductsService {
     return this.http.post(this.url+"/Create",Products);
   }
 
-  getAll() {
-    return this.http.get(`${this.url}/GetAll`);
+  getProducts(): Observable<Products[]> {
+    return this.http.get<Products[]>(this.url+"/GetAll");
   }
   delete(id) {
     return this.http.delete(this.url+"/Delete?Id="+id);

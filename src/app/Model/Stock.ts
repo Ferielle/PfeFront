@@ -3,5 +3,4 @@ export class Stock {
     Quantity:number;
     FeaturesDetailId:number;
     ProductId:number;
-    
   }

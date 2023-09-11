@@ -27,10 +27,14 @@ import { FavoriteComponent } from './Template/favorite/favorite.component';
 import { StockComponent } from './Template/stock/stock.component';
 import { AboutUsComponent } from './Template/about-us/about-us.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsComponent } from './Template/products/products.component';
+import { ProductsComponent } from './Template/products/products-list/products.component';
 import { FooterComponent } from './Template/footer/footer.component';
 import { ProductImageComponent } from './Template/product-image/product-image.component';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HighlightDirective } from './highlight.directive';
+import { ProductformComponent } from './Template/products/productform/productform.component';
+import { ProduitformComponent } from './Template/produitform/produitform.component';
+import { ListproduitiageComponent } from './Template/product-image/listproduitiage/listproduitiage.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +65,10 @@ import { FormsModule } from '@angular/forms';
     AboutUsComponent,
     ProductsComponent,
     ProductImageComponent,
+    HighlightDirective,
+    ProductformComponent,
+    ProduitformComponent,
+    ListproduitiageComponent,
     
 
   ],
@@ -69,7 +77,10 @@ import { FormsModule } from '@angular/forms';
     SlickCarouselModule,
     MyRoutingModule,
     HttpClientModule ,
-    FormsModule
+    FormsModule,
+    BrowserModule, 
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

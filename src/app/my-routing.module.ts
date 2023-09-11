@@ -17,8 +17,9 @@ import { AddressComponent } from './Template/address/address.component';
 import { CategoryComponent } from './Template/category/category.component';
 import { BrandsComponent } from './Template/brands/brands.component';
 import { Products } from './Model/Products';
-import { ProductsComponent } from './Template/products/products.component';
+import { ProductsComponent } from './Template/products/products-list/products.component';
 import { ProductImageComponent } from './Template/product-image/product-image.component';
+import { ProductformComponent } from './Template/products/productform/productform.component';
  
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -39,7 +40,10 @@ const routes: Routes = [
   {path: "category", component: CategoryComponent},
   {path: "Brand", component: BrandsComponent},
   {path: "Products", component: ProductsComponent},
-  {path: "ProductImage", component: ProductImageComponent}
+  {path: "ProductImage", component: ProductImageComponent},
+  {path: "prodform", component: ProductformComponent},
+
+
 
 ];
 

@@ -10,3 +10,8 @@
 h3 {
     text-align: center;
   }
+  .image-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+  }

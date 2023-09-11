@@ -1,31 +1,16 @@
+<form  (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">FileName:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="formData.FileName" required>
+  </div>
 
-<table class="table">
-    <thead>
-      <tr>
-        <th>products images</th>
-      </tr>
-    </thead>
-    <tbody>
-    
-      <tr *ngFor="let item of items ">
-         
-        <td>
-          <img [src]="item.Binarydata" />
-        </td>
-        <td>   <button class="btn btn-danger rounded-button">Supprimer</button></td>
-          
-    
-    
-      </tr>
-      <tr>
-        <input type="text" #categoryInput placeholder="category">
-        <input type="file" #Binarydata (change)="onFileSelected($event)" />
+  <label for="email">URL:</label>
+  <input type="email" id="email" name="email" [(ngModel)]="formData.URL" required>  
+  <div>
+    <label for="image">Picture:</label>
+    <input type="file" id="image" name="image" (change)="onImageChange($event)" accept="Picture/*">
+  </div>
+  <button type="submit">Submit</button>
+</form>
 
-        <div class="d-flex justify-content-end"><button class="btn btn-green btn-sm ml-2" (click)="addItem(Binarydata.value)">Add</button>
-    
-     </div>    
-    </tr>
-    </tbody>
-    </table>
-    
-         
+  

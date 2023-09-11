@@ -1,0 +1,29 @@
+
+<div class="row mt-4">
+  <div class="col-12 col-md-8 mx-auto">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Label</th>
+          <th>Price</th>
+          <!-- Add other table headers for other properties if needed -->
+        </tr>
+      </thead>
+      <tbody>
+        <div *ngFor="let product of products" class="product-card">
+          <h2>{{ product.Label }}</h2>
+          <p>Price: {{ product.PriceOOt }}</p>
+          <p>Quantity: {{ product.Quantity }}</p>
+
+
+        </div>
+    </table>
+  </div>
+</div>
+
+  
+     
+
+
+      
