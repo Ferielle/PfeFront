@@ -1,0 +1,68 @@
+.cadre {
+    width: 600px; /* Largeur souhaitée du cadre */
+    margin: 0 auto; /* Centre le cadre horizontalement */
+    padding: 20px; /* Marge intérieure pour l'espace à l'intérieur du cadre */
+    border: 1px solid #ccc; /* Bordure du cadre */
+    border-radius: 5px; /* Coins arrondis du cadre */
+}
+
+/* Styles pour le formulaire (ajustez selon vos besoins) */
+form {
+    text-align: left; /* Centre le contenu du formulaire */
+}
+
+/* Styles pour les champs du formulaire (ajustez selon vos besoins) */
+label, input {
+    display: block; /* Place chaque champ/formulaire sur une nouvelle ligne */
+    margin-bottom: 10px; /* Espacement entre les champs */
+}
+/* Styles pour l'image du formulaire */
+.form-image {
+    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas la largeur du conteneur */
+    display: block; /* Place l'image sur une nouvelle ligne */
+    margin-top: 10px; /* Espacement supérieur par rapport au champ précédent */
+}
+/* Styles pour l'input de fichier personnalisé */
+/* Styles pour personnaliser uniquement le bouton de l'input de fichier */
+.custom-file-input {
+    cursor: pointer; /* Curseur en main au survol */
+    background-color: #007BFF; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border: 1px solid #007BFF; /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px 10px; /* Espacement interne */
+}
+
+/* Optionnel : Style pour le survol du bouton */
+.custom-file-input:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+}
+/* Styles pour personnaliser uniquement le bouton de l'input de fichier */
+.custom-file-input {
+    cursor: pointer; /* Curseur en main au survol */
+    background-color: #007BFF; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border: 1px solid #007BFF; /* Bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px 10px; /* Espacement interne */
+}
+
+/* Optionnel : Style pour le survol du bouton */
+.custom-file-input:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+}
+/* Style for the custom button */
+.custom-button {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Hover effect for the custom button */
+.custom-button:hover {
+    background-color: white;
+}
+

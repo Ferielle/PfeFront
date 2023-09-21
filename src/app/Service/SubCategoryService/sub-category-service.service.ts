@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SubCategory } from 'src/app/Model/Subcategory';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class SubCategoryService {
     return this.http.post(this.url+"/Create",SubCategory);
   }
 
-  getAll() {
-    return this.http.get(`${this.url}/GetAll`);
+  getAll():Observable<SubCategory[]>{
+    return this.http.get<SubCategory[]>(`${this.url}/GetAll`);
   }
   delete(id) {
     return this.http.delete(this.url+"/DeleteId?Id="+id);

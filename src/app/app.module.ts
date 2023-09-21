@@ -29,12 +29,11 @@ import { AboutUsComponent } from './Template/about-us/about-us.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './Template/products/products-list/products.component';
 import { FooterComponent } from './Template/footer/footer.component';
-import { ProductImageComponent } from './Template/product-image/product-image.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HighlightDirective } from './highlight.directive';
 import { ProductformComponent } from './Template/products/productform/productform.component';
 import { ProduitformComponent } from './Template/produitform/produitform.component';
-import { ListproduitiageComponent } from './Template/product-image/listproduitiage/listproduitiage.component';
+import { CommonModule } from '@angular/common';
+import { ShoppingCartComponent } from './Template/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -64,11 +63,9 @@ import { ListproduitiageComponent } from './Template/product-image/listproduitia
     StockComponent,
     AboutUsComponent,
     ProductsComponent,
-    ProductImageComponent,
-    HighlightDirective,
     ProductformComponent,
     ProduitformComponent,
-    ListproduitiageComponent,
+    ShoppingCartComponent,
     
 
   ],
@@ -79,7 +76,8 @@ import { ListproduitiageComponent } from './Template/product-image/listproduitia
     HttpClientModule ,
     FormsModule,
     BrowserModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
 
   ],
   providers: [],

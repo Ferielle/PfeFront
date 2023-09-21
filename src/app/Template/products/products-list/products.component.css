@@ -1,17 +1,12 @@
-.btn-green {
-    background-color: #28a745; /* Green color */
-    color: #ffffff; /* White text color */
-    border: none; /* Remove border */
-    padding: 10px 20px; /* Adjust the padding to set the width and height */
-    cursor: pointer; /* Add pointer cursor on hover */
-    border-radius: 4px; /* Add some rounded corners */
-  }
-  
-h3 {
-    text-align: center;
-  }
-  .image-container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-top: 20px;
-  }
+
+  /* Ajoutez ces styles dans votre fichier CSS */
+.square-card {
+  width: 300px; /* Largeur personnalisée */
+  height: 300px; /* Hauteur personnalisée */
+  /* Vous pouvez ajuster la largeur et la hauteur selon vos besoins */
+}
+.custom-small-button {
+  font-size: 12px; /* Taille de police personnalisée */
+  padding: 5px 10px; /* Rembourrage personnalisé pour ajuster la taille */
+  /* Autres styles personnalisés au besoin */
+}

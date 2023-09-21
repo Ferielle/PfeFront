@@ -1,43 +1,20 @@
-import { SafeUrl } from "@angular/platform-browser";
-import { ProductImage } from "./ProductImage";
+import { Brand } from "./Brand";
+import { Discount } from "./Discount";
 
 export class Products {
-    Id:number|null;
+    Id:number;
     Label:string;
     PriceOOt:number;
     Quantity:number;
-    Discountid:number;
+    FileName:string;
+    Picture: string;
+    DefaultImage:string;
+    DiscountPourcentage:Number;
     Brandid:number;
     SubCategoryid:number;
     ShopFeatureid:number;
     VatId:number;
-    img : ProductImage[] ;
-    safeUrl: SafeUrl
+    
 
-    constructor(
-      Id: number | null,
-      Label: string,
-      PriceOOt: number,
-      Quantity: number,
-      Discountid: number,
-      Brandid: number,
-      SubCategoryid: number,
-      ShopFeatureid: number,
-      VatId: number,
-      img: any,
-      safeUrl: SafeUrl
-    ) {
-      this.Id = Id;
-      this.Label = Label;
-      this.PriceOOt = PriceOOt;
-      this.Quantity = Quantity;
-      this.Discountid = Discountid;
-      this.Brandid = Brandid;
-      this.SubCategoryid = SubCategoryid;
-      this.ShopFeatureid = ShopFeatureid;
-      this.VatId = VatId;
-      this.img = img;
-      this.safeUrl = safeUrl;
-    }
     
   }

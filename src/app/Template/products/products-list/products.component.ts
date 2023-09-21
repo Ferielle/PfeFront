@@ -3,6 +3,8 @@ import { Products } from 'src/app/Model/Products';
 import { ProductsService } from 'src/app/Service/ProductsService/products-service.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import html2canvas from 'html2canvas';
+import { ShopComponent } from '../../shop/shop.component';
+import { ShoppingCartServiceService } from 'src/app/Service/ShoppingCartService/shopping-cart-service.service';
 
 @Component({
   selector: 'app-products',
@@ -12,10 +14,28 @@ import html2canvas from 'html2canvas';
 export class ProductsComponent implements OnInit {
   products: Products[] = [];
   product: Products
-  constructor(private productService: ProductsService,
-    private sanitizer: DomSanitizer) {
+  
+  loadProducts(): void {
+    this.productService.getProducts().subscribe(
+      (products: Products[]) => {
+        this.products = products;
+        console.log(products)
+        this.products.forEach(p => {
+        })
+      },
+      error => {
+        console.error('Error fetching products:', error);
+        // Handle the error, show a message to the user, etc.
+      }
+    )
+  }
+  constructor(private productService: ProductsService,private sanitizer: DomSanitizer,private shopcart: ShoppingCartServiceService ) {
+  
     }
-
+   
+    addToCart(product: Products) {
+      this.shopcart.addToCart(product); // Utilisez le service de panier pour ajouter le produit au panier
+    }
   ngOnInit(): void {
     this.loadProducts();
 
@@ -42,20 +62,7 @@ export class ProductsComponent implements OnInit {
       console.error("Image container not found.");
     }
   }
-  loadProducts(): void {
-    this.productService.getProducts().subscribe(
-      (products: Products[]) => {
-        this.products = products;
-        console.log(products)
-        this.products.forEach(p => {
-        })
-      },
-      error => {
-        console.error('Error fetching products:', error);
-        // Handle the error, show a message to the user, etc.
-      }
-    )
-  }
+  
   /*
 
 
@@ -118,3 +125,5 @@ console.log("error")
 }
 */
 }
+
+

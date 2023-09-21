@@ -1,0 +1,18 @@
+<h2>Panier</h2>
+  
+
+<ul class="list-group">
+ 
+
+<div class="container">
+  <h2>Liste Bootstrap avec Miniature</h2>
+  <ul class="list-group">
+    <div *ngFor="let product of cart" class="cart-item">
+      <li class="list-group-item d-flex align-items-center">
+          <img [src]="product.Picture" alt="Miniature 1" class="mr-3" style="max-width: 100px;">
+          <div class="flex-grow-1">
+            <p class="mb-0">Prix : {{ product.PriceOOt | currency }}</p>
+            <p class="mb-0">{{ product.Label }}</p>
+          </div>     </li>
+    
+</div></ul>
