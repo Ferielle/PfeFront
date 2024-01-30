@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import html2canvas from 'html2canvas';
 import { Products } from 'src/app/Model/Products';
-import { ShoppingCartServiceService } from 'src/app/Service/ShoppingCartService/shopping-cart-service.service';
+import { ShoppingCart } from 'src/app/Model/ShoppingCart';
+import { ShoppingCartService } from 'src/app/Service/ShoppingCartService/shopping-cart-service.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,14 +10,24 @@ import { ShoppingCartServiceService } from 'src/app/Service/ShoppingCartService/
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent {
-  cart: Products[] = []; // Panier
+  cart: ShoppingCart[] = []; // Panier
 
-  constructor(private Service: ShoppingCartServiceService) {} // Injection du service de panier
-
-  ngOnInit() {
-    // Utilisez le service de panier pour obtenir le contenu du panier
-    this.cart = this.Service.getCart();
+  constructor(private Service: ShoppingCartService) {} // Injection du service de panier
+ 
+  ngOnInit(){
+    // Use the shopping cart service to get the content of the cart
+    this.Service.getAll().subscribe(
+      (cart: ShoppingCart[]) => {
+        this.cart = cart;
+      },
+      (error) => {
+        console.error('Error fetching products:', error);
+        // Consider adding user-friendly error handling/notification here
+      }
+    
+    );
   }
+
 
   public handleMissingImage(event: Event) {
     (event.target as HTMLImageElement).style.display = 'none';
@@ -35,6 +46,16 @@ export class ShoppingCartComponent {
     } else {
       console.error("Image container not found.");
     }
+  }
+//doubt !!! 
+  addToCart(cart: ShoppingCart) {
+    this.cart.push(cart);
+  }
+
+  getCart(): ShoppingCart[] {
+    console.log(this.cart)
+    return this.cart;
+
   }
   
 }

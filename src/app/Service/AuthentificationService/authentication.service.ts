@@ -1,18 +1,17 @@
-/*
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Token } from '../Model/Token';
 import { of, Observable } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
-import { addUser, User } from '../Model/User';
 import { UserService } from './user.service';
+import { User } from 'src/app/Model/User';
+import { Token } from 'src/app/Model/Token';
+
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthenticationService {
+  loginUrl="https://fby.outsystemscloud.com/OnlineStore_BL/rest/UsersApi/Login";
 
-  loginUrl="http://localhost:8000/api/login"
-  refreshUrl="http://127.0.0.1:8000/api/token/refresh";
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   public loggedUser;
@@ -23,6 +22,9 @@ export class AuthService {
   loggedInUser(){
     return this.loggedUser;
   }
+  loggedInUserId(): number | null {
+    return this.loggedUser ? this.loggedUser.id : null;
+  }
 
   // getLoggedInUser(){
 
@@ -32,10 +34,10 @@ export class AuthService {
   login(user:User): Observable<boolean> {
     return this.http.post<any>(this.loginUrl, user)
       .pipe(
-        tap(tokens => this.doLoginUser(user.username, tokens)),
+        tap(tokens => this.doLoginUser(user.Emailaddress, tokens)),
         mapTo(true),
         catchError(error => {
-          alert(error.error);
+          alert(error.message);
           return of(false);
         }));
   }
@@ -48,16 +50,10 @@ export class AuthService {
     return !!this.getJwtToken();
   }
 
-  refreshToken() {
-    return this.http.post<any>(this.refreshUrl, {
-      'refreshToken': this.getRefreshToken()
-    }).pipe(tap((tokens: Token) => {
-      this.storeJwtToken(tokens.token);
-    }));
-  }
+  
 
   getJwtToken() {
-    return localStorage.getItem(this.JWT_TOKEN )|| '{}';
+    return localStorage.getItem(this.JWT_TOKEN);
   }
 
   private doLoginUser(username: string, tokens: Token) {
@@ -69,11 +65,10 @@ export class AuthService {
     this.userservice.getUserByUsername(username).subscribe((data)=>{
       localStorage.setItem('id', JSON.stringify(data[0].id));
       this.loggedUser.id=data[0].id;
-      this.loggedUser.username=data[0].cin;
-      this.loggedUser.firstname=data[0].firstname;
-      this.loggedUser.lastname=data[0].lastname;
-      this.loggedUser.birthday=data[0].birthday;
-      this.loggedUser.email=data[0].email;
+      this.loggedUser.address=data[0].address;
+      this.loggedUser.FirstName=data[0].FirstName;
+      this.loggedUser.LastName=data[0].LastName;
+      this.loggedUser.Emailaddress=data[0].Emailaddress;
       console.log(this.loggedUser.id);
 
       // this.loggedUser.id=data[0].id;
@@ -98,13 +93,14 @@ export class AuthService {
   }
 
   private storeTokens(tokens: Token) {
-    localStorage.setItem(this.JWT_TOKEN, tokens.token);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
+    localStorage.setItem(this.JWT_TOKEN, tokens.EncodedToken);
+    //localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
   }
 
   private removeTokens() {
     localStorage.removeItem(this.JWT_TOKEN);
-    localStorage.removeItem(this.REFRESH_TOKEN);
+    //localStorage.removeItem(this.REFRESH_TOKEN);
   }
+
+
 }
-*/

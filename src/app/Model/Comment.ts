@@ -1,4 +1,4 @@
-export class Category {
+export class Comment {
     Id:number;
     Title: string;
     Content:string;

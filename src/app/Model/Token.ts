@@ -1,4 +1,4 @@
 export class Token {
-  token:string;
-  refresh_token:string;
+  EncodedToken:string;
+  ResultMessage:string;  
 }

@@ -9,4 +9,9 @@
   font-size: 12px; /* Taille de police personnalisée */
   padding: 5px 10px; /* Rembourrage personnalisé pour ajuster la taille */
   /* Autres styles personnalisés au besoin */
+  height: 6;
+}
+.quantity {
+  width: 30px; /* Adjust the width as needed */
+  height: 29px;
 }

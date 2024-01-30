@@ -1,0 +1,16 @@
+<!-- votre-composant.component.html -->
+
+<section>
+  <h4>Checkout Details</h4>
+  <dl>
+    <ng-container *ngFor="let detail of checkoutDetails">
+      <dt>
+        <strong>{{ detail[0] }}</strong>
+      </dt>
+      <dd>{{ detail[1] }}</dd>
+    </ng-container>
+  </dl>
+  <button (click)="getOrderId(this.Id)" class="btn btn-outline-secondary btn-xs">
+    Confirm Order
+  </button>
+</section>

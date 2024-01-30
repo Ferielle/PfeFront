@@ -1,4 +1,4 @@
 export class Brand {
-    Id:number;
-    Label:string
+    id:number;
+    Label:string;
   }

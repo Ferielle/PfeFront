@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class StockServiceService {
+export class StockService {
 
   constructor(private http:HttpClient) { }
   url="https://fby.outsystemscloud.com/OnlineStore_BL/rest/StockApi"

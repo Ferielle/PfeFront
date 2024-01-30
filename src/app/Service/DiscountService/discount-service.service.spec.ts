@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DiscountServiceService } from './discount-service.service';
+import { DiscountService } from './discount-service.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('DiscountServiceService', () => {
-  let service: DiscountServiceService;
+describe('DiscountService', () => {
+  let service: DiscountService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(DiscountServiceService);
+    TestBed.configureTestingModule({    imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(DiscountService);
   });
 
   it('should be created', () => {

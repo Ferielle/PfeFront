@@ -1,9 +1,14 @@
 export class Order {
     Id:number;
-    Label:string;
     Date:Date;
-    TotalOot:number;
     Status:string;
-    UserId:number;
-    Tva: number;
+    tva: number;
+  
+
+  constructor(id, date, status, tva) {
+    this.Id = id;
+    this.Date = date;
+    this.Status = status;
+    this.tva = tva;
+  }
   }

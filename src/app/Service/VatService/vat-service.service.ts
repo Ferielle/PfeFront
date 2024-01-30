@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class VatServiceService {
+export class VatService {
 
   constructor(private http:HttpClient) { }
   url="https://fby.outsystemscloud.com/OnlineStore_BL/rest/VatApi"

@@ -1,41 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { ShoppingCart } from 'src/app/Model/ShoppingCart';
+import { CartService } from '../CartService/cart.service';
 import { Products } from 'src/app/Model/Products';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShoppingCartServiceService {
+export class ShoppingCartService {
 
-  constructor(private http:HttpClient) { }
+  private shoppingCart: ShoppingCart[] = [];
+  constructor(private http: HttpClient) {}
+
   url="https://fby.outsystemscloud.com/OnlineStore_BL/rest/ShoppingCartApi"
-  private cart: Products[] = [];
 
-  addToCart(product: Products) {
-    this.cart.push(product);
-  }
+  
 
-  getCart(): Products[] {
-    return this.cart;
+  getAll() : Observable<ShoppingCart[]>{
+    return this.http.get<ShoppingCart[]>(this.url+"/GetAll");
   }
- 
-  getShoppingCartById(id):Observable<any>{
-    return this.http.get(this.url+"/GetById?Id="+id);
-  }
-  add(ShoppingCart){
-    return this.http.post(this.url+"/Create",ShoppingCart);
-  }
+  /*calculateTotalPrice(): number {
+    return this.cart.reduce((total, item) => total + item.Quantity * item.ProductId, 0);
+  }*/
 
-  getAll() {
-    return this.http.get(`${this.url}/GetAll`);
+  getshoppingCartById(id):Observable<any>{
+    return this.http.get(this.url+"/GetById?id="+id);
   }
   delete(id) {
-    return this.http.delete(this.url+"/DeleteId?Id="+id);
-  }
-
-  update(id: any) {
-    return this.http.put(`${this.url}/UpdateShoppingCart/`, id);
+    return this.http.delete(this.url+"/Delet?Id="+id);
   }
  
+
 }

@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CheckoutServiceService } from './checkout-service.service';
+import { CheckoutService } from './checkout-service.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('CheckoutServiceService', () => {
-  let service: CheckoutServiceService;
+describe('CheckoutService', () => {
+  let service: CheckoutService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(CheckoutServiceService);
+    TestBed.configureTestingModule({    imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(CheckoutService);
   });
 
   it('should be created', () => {

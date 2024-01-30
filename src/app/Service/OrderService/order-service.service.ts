@@ -5,16 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderServiceService {
+export class OrderService {
 
   constructor(private http:HttpClient) { }
-  url="https://fby.outsystemscloud.com/OnlineStore_BL/rest/OrderApi"
- 
+  url="https://fby.outsystemscloud.com/OnlineStore_BL/rest/OrderCheckoutApi"
   getOrderById(id):Observable<any>{
     return this.http.get(this.url+"/GetById?Id="+id);
   }
-  add(Order){
-    return this.http.post(this.url+"/Create",Order);
+  add(Ordercheck){
+    return this.http.post(this.url+"/Createorderandcheckout",Ordercheck);
   }
 
   getAll() {

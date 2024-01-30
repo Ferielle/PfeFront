@@ -1,10 +1,11 @@
 export class User{
     id:number;
-    username:string;
+    Emailaddress:string;
     password:string;
     firstname:string;
     lastname:string;
-  
+    Phone:number;
+    Displayname:string;
   
   }
   export class addUser{
@@ -23,9 +24,9 @@ export class User{
     id:number;
     cin:string;
     password:string;
-    roles:string[];
-    lastname:string;
-    firstname:string;
+    roles:string;
+    LastName:string;
+    FirstName:string;
     birthday:Date;
     adress:string;
     email:string;

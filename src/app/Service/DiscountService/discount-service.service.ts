@@ -6,7 +6,7 @@ import { Discount } from 'src/app/Model/Discount';
 @Injectable({
   providedIn: 'root'
 })
-export class DiscountServiceService {
+export class DiscountService {
 
   constructor(private http:HttpClient) { }
   url="https://fby.outsystemscloud.com/OnlineStore_BL/rest/DiscountApi"

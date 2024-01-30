@@ -1,0 +1,17 @@
+/* votre-composant.component.css */
+
+section {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+dt {
+    font-weight: bold;
+}
+/* votre-composant.component.css */
+
+li:nth-child(even) {
+    background-color: #f9f9f9;
+}

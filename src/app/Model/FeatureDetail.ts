@@ -1,5 +1,6 @@
 export class FeatureDetails {
     Id:number;
-    Label:string
+    value:string
     FeatureId:number
+    StockId:number
   }

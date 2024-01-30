@@ -1,13 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FavoriteServiceService } from './favorite-service.service';
+import { FavoriteService } from './favorite-service.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('FavoriteServiceService', () => {
-  let service: FavoriteServiceService;
+describe('FavoriteService', () => {
+  let service: FavoriteService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(FavoriteServiceService);
+    TestBed.configureTestingModule({    imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(FavoriteService
+      
+      );
   });
 
   it('should be created', () => {

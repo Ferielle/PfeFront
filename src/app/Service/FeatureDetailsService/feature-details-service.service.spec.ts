@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FeatureDetailsServiceService } from './feature-details-service.service';
+import { FeatureDetailsService } from './feature-details-service.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('FeatureDetailsServiceService', () => {
-  let service: FeatureDetailsServiceService;
+describe('FeatureDetailsService', () => {
+  let service: FeatureDetailsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(FeatureDetailsServiceService);
+    TestBed.configureTestingModule({    imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(FeatureDetailsService);
   });
 
   it('should be created', () => {

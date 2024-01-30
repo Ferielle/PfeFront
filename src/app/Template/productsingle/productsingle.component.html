@@ -1,13 +1,4 @@
-<div *ngIf="product">
-  <h2>Détails du produit</h2>
- 
-    <h2>Détails du produit</h2>
-    <h3>Nom du produit : {{ product.Label }}</h3>
+    
+    <img [src]="product.Picture" alt="{{ product.Label }}" style="width: 200px; height: auto;" /> <!-- Adjust width as needed -->
+    <p>Nom du produit : {{ product.Label }} </p>
     <p>Prix : {{ product.PriceOOt }}</p>
-    <p>Quantité : {{ product.Quantity }}</p>
-    <img [src]="product.Picture" alt="{{ product.Label }}" />
-
-  </div>
-<div *ngIf="!product">
-  <p>Produit introuvable. (product: {{ product }})</p> <!-- Ajoutez cette ligne pour déboguer -->
-</div>

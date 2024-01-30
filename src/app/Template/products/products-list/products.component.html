@@ -1,25 +1,21 @@
+<!-- parent component template -->
+<button (click)="redirectToCart()" style="padding: 5px 10px;" class="btn btn-primary custom-small-button">View Cart Content</button>
+<br><br>
 <div class="row">
   <div class="col-sm-12">
-    <ul class="list-group list-group-horizontal">
-      <li *ngFor="let product of products" class="list-group-item">
-        <div class="card mb-3"> <!-- Retiré la classe square-card -->
-          <img class="card-img-top" [src]="product.Picture" alt="Card image cap"style="max-width: 200px;max-length:200px;" />
+    <div class="row">
+      <!-- Use ngFor to loop through products and create cards -->
+      <div *ngFor="let product of products" class="col-sm-2 mb-1"> <!-- Adjust margin-bottom as needed -->
+        <div class="card" style="width: 300px; height: 400px;"> <!-- Adjust width and height as needed -->
+          <app-productsingle [product]="product"></app-productsingle>
           <div class="card-body">
-            <h5 class="card-title">{{ product.Label }}</h5>
-            <p class="card-text">Price: {{ product.PriceOOt }}</p>
-            <p class="card-text">Quantity: {{ product.Quantity }}</p>
-             <button (click)="addToCart(product)" class="btn btn-primary custom-small-button"> <!-- Ajoutez une classe personnalisée pour le style du bouton -->
+            <input type="number" min="0" max="100" name="{{product.Id}}Quantity" class="quantity"> <!-- Smallest size -->
+            <button (click)="addToCart(product.Id)" class="btn btn-primary custom-small-button">
               Ajouter au panier
             </button>
+          </div>
         </div>
-        </div>
-      <!--  <div *ngFor="let product of products" class="product-card">
-          <h2>{{ product.Label }}</h2>
-          <p>Price: {{ product.PriceOOt }}</p>
-          <p>Quantity: {{ product.Quantity }}</p>
-       
-          <img [src]="product.Picture"  />
-          <button (click)="addToCart(product)">Ajouter au panier</button>
-          <button [routerLink]="'/produit/' + product.Id">Product Details</button>        </div>
-
-    </table>-->
+      </div>
+    </div>
+  </div>
+</div>

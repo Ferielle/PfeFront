@@ -1,4 +1,3 @@
-/*
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -9,11 +8,11 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  url="http://127.0.0.1:8000/api/users"
+  url="https://fby.outsystemscloud.com/OnlineStore_BL/rest/UsersApi/"
 
 
-  getUserByUsername(username){
-  return  this.http.get(this.url+"?cin="+username)
+  getUserByUsername(Emailaddress){
+  return  this.http.get(this.url+"?Emailaddress="+Emailaddress)
   }
 
   addUser(user){
@@ -28,5 +27,7 @@ export class UserService {
   updateUser(){
     
   }
+
+
+
 }
-*/

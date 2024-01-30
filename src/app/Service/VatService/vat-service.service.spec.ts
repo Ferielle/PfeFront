@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VatServiceService } from './vat-service.service';
+import { VatService } from './vat-service.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('VatServiceService', () => {
-  let service: VatServiceService;
+describe('VatService', () => {
+  let service: VatService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(VatServiceService);
+    TestBed.configureTestingModule({    imports: [HttpClientTestingModule]
+    });
+    service = TestBed.inject(VatService);
   });
 
   it('should be created', () => {

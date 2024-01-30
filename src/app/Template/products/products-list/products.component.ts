@@ -1,129 +1,108 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Products } from 'src/app/Model/Products';
 import { ProductsService } from 'src/app/Service/ProductsService/products-service.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import html2canvas from 'html2canvas';
-import { ShopComponent } from '../../shop/shop.component';
-import { ShoppingCartServiceService } from 'src/app/Service/ShoppingCartService/shopping-cart-service.service';
+import { ShoppingCartService } from 'src/app/Service/ShoppingCartService/shopping-cart-service.service';
+import { Router } from '@angular/router';
+import { CartService } from 'src/app/Service/CartService/cart.service';
+import { Cart } from 'src/app/Model/Cart';
+import { AuthenticationService } from 'src/app/Service/AuthentificationService/authentication.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
   products: Products[] = [];
-  product: Products
-  
+  textInput: string = '';
+  imageData: string | undefined;
+  quantity: number = 0;
+  constructor(
+    private productService: ProductsService,
+    private cartservice: CartService,
+    private router: Router,
+    
+  ) {
+
+
+
+  }
+  redirectToCart() {
+    // Navigate to the route where you display the cart content
+    this.router.navigate(['/cart']); // Update 'cart' with the actual route path
+  }
+  ngOnInit(): void {
+    this.loadProducts();
+  }
+
   loadProducts(): void {
     this.productService.getProducts().subscribe(
       (products: Products[]) => {
         this.products = products;
-        console.log(products)
-        this.products.forEach(p => {
-        })
       },
-      error => {
+      (error) => {
         console.error('Error fetching products:', error);
-        // Handle the error, show a message to the user, etc.
+        // Consider adding user-friendly error handling/notification here
       }
-    )
+    );
   }
-  constructor(private productService: ProductsService,private sanitizer: DomSanitizer,private shopcart: ShoppingCartServiceService ) {
-  
-    }
-   
-    addToCart(product: Products) {
-      this.shopcart.addToCart(product); // Utilisez le service de panier pour ajouter le produit au panier
-    }
-  ngOnInit(): void {
-    this.loadProducts();
-
-  }
-  ngDoCheck() {
-
+  increment(): void {
+    this.quantity++;
   }
   
-  public handleMissingImage(event: Event) {
+
+  GetCartContent(){
+    let cart =localStorage.getItem("cart");
+    if(cart==null){
+      return [];
+    }else{
+      return JSON.parse(cart);
+    }
+
+  }
+  addToCart(productid: number) {
+    let quantityInput: any | null;
+    quantityInput = document.querySelector(`input[name="${productid}Quantity"]`);
+    const quantity = parseInt(quantityInput.value, 10);
+    let cart = new Cart(0, productid, quantity, 0);
+  
+    let cartcontent = this.GetCartContent();
+    let foundProduct = cartcontent.find(p => p.id == productid);
+  
+    if (foundProduct !== undefined) {
+      foundProduct.quantity++;
+    } else {
+      // If the product is not found, add it to the cart
+      cartcontent.push({
+        id: productid,
+        quantity: 1,
+      });
+    }
+  
+    // Save the updated cart content to localStorage
+    localStorage.setItem("cart", JSON.stringify(cartcontent));
+  
+    // Call the addToCart method from CartService
+    this.cartservice.addToCart(cart).subscribe(data => {
+      console.log(data);
+    });
+  }
+  
+
+  public handleMissingImage(event: Event): void {
     (event.target as HTMLImageElement).style.display = 'none';
   }
-  
-  textInput: string = '';
-  imageData: string | undefined;
 
-  convertTextToImage() {
+  convertTextToImage(): void {
     const imageContainer = document.querySelector('.image-container') as HTMLElement;
 
     if (imageContainer) {
-      html2canvas(imageContainer).then(canvas => {
+      html2canvas(imageContainer).then((canvas) => {
         this.imageData = canvas.toDataURL();
       });
     } else {
-      console.error("Image container not found.");
+      console.error('Image container not found.');
     }
   }
-  
-  /*
-
-
-
-
-
-
-implements OnInit  {
-  items : Products[]=[];
-  ProductInput: Products = {} as Products;
-  constructor(private Productsservice : ProductsService,private cdr: ChangeDetectorRef){}
-
-  ngOnInit(): void {
-    
-    this.Productsservice.getAll().subscribe
-    (data => {
-     this.items = data as Products[];
-   });
 }
-fetchItems(){
-this.Productsservice.getAll().subscribe
-  (data => {
-   this.items = data as Products[];
- });
- 
-}
-
-addItem(Products: Products) {
-  this.Productsservice.add(Products)
-    .subscribe(
-      (addedProduct: any) => {
-        this.items.push(addedProduct);
-        this.fetchItems();
-
-      },
-      (error: any) => {
-        // Handle error if needed
-        console.error(error);
-      }
-    );
-    
-
-}
-
-deleteFunction(id: any): void {
-  this.Productsservice.delete(id)
-
-    .subscribe(
-      () => {
-        this.fetchItems();
-console.log("success")        
-},
-      (error) => {
-console.log("error")        
-}
-    );
-
-}
-
-}
-*/
-}
-
-
